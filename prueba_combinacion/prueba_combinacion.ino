@@ -1,4 +1,5 @@
 #include "Combinacion.h"
+#include "ComandoAT.h"
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600); 
@@ -12,6 +13,7 @@ void combHex();
 
 void enviarPaquete(byte byte1, byte byte2);
 Combinacion comb;
+ComandoAT comando;
 
 void loop() {
   
@@ -25,7 +27,8 @@ void loop() {
   Serial.print(parte1Comb,HEX);
   Serial.print(" ");
   Serial.println(parte2Comb,HEX);
-  Serial.write(parte2Comb);
+  comando.ComandoAT_LED(0x4);
+  //Serial.write(parte2Comb);
   delay(2000);
   //combHex();
   

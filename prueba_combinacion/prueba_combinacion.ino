@@ -1,27 +1,36 @@
 #include "Combinacion.h"
+#include "ComandoAT.h"
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600); 
   
 }
+//int combinacion[]={15,15,15,10};
 int combinacion[4];
-char combinacionHex[4];
 void incrementaComb(int valorPos, int pos);
 void cambiarHex();
-void enviarFrame();
-String cambiarHexAux(int pos);
 void combHex();
+
 void enviarPaquete(byte byte1, byte byte2);
 Combinacion comb;
-void loop() {
+ComandoAT comando;
 
+void loop() {
+  
   // put your main code here, to run repeatedly:
   //FALTA PROBAR 0000 PERO CREO QUE ESA NO VALE 
   
   //incrementaComb(combinacion[3],3);
   comb.incrementaComb(combinacion,combinacion[3],3);
+  byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
+  byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
+  Serial.print(parte1Comb,HEX);
+  Serial.print(" ");
+  Serial.println(parte2Comb,HEX);
+  comando.ComandoAT_LED(0x4);
+  //Serial.write(parte2Comb);
   delay(2000);
-  combHex();
+  //combHex();
   
 }
 void combHex(){
@@ -40,10 +49,7 @@ void combHex(){
   }
   unsigned long aux1 = strtoul(textobyte1, NULL, HEX);
   unsigned long aux2 = strtoul(textobyte2, NULL, HEX);
- /*Serial.print(aux1);
-  Serial.write(aux1);
-  Serial.print(" ");
-  Serial.println(aux2);*/
+
   enviarPaquete(aux1,aux2);
 }
 

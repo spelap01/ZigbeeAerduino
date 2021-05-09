@@ -3,7 +3,13 @@ void Combinacion::incrementaComb(int* comb,int valorPos, int pos){
    valorPos=valorPos+1;
     if(valorPos==16){
       valorPos=0;
-      incrementaComb(comb,comb[pos-1],pos-1);
+      if (pos-1<0){
+        for(int i=0;i<sizeof(comb);i++){
+          comb[i]=0;
+        }
+      }else{
+        incrementaComb(comb,comb[pos-1],pos-1);
+      }
     }
     comb[pos]=valorPos;
     ///holahola

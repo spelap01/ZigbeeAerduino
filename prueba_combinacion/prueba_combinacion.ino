@@ -5,7 +5,7 @@ void setup() {
   Serial.begin(9600); 
   
 }
-int combinacion[4];
+int combinacion[]={15,15,15,10};
 
 void incrementaComb(int valorPos, int pos);
 void cambiarHex();

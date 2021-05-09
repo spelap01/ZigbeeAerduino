@@ -7,6 +7,6 @@ class Combinacion{
   int combinacion[4];
   void incrementaComb(int* comb, int valorPos, int pos);
   void incrementaCombprueba(int* comb, int valorPos, int pos);
-  private:
+  
   
 };

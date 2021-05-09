@@ -3,7 +3,7 @@ void Combinacion::incrementaComb(int* comb,int valorPos, int pos){
    valorPos=valorPos+1;
     if(valorPos==16){
       valorPos=0;
-      //incrementaComb(comb[pos-1],pos-1);
+      incrementaComb(comb,comb[pos-1],pos-1);
     }
     comb[pos]=valorPos;
     ///holahola
@@ -11,7 +11,7 @@ void Combinacion::incrementaComb(int* comb,int valorPos, int pos){
 byte Combinacion::generarByte(int valor1, int valor2){
   char aux1=cambiarHex(valor1);
   char aux2=cambiarHex(valor2);
-  char textoaux[2];
+  char textoaux[]="A2";
   textoaux[0]=aux1;
   textoaux[1]=aux2;
   unsigned long auxDevolver = strtoul(textoaux, NULL, HEX);

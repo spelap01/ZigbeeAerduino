@@ -22,9 +22,10 @@ void loop() {
   comb.incrementaComb(combinacion,combinacion[3],3);
   byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
   byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
-  Serial.print(parte1Comb);
+  Serial.print(parte1Comb,HEX);
   Serial.print(" ");
-  Serial.println(parte2Comb);
+  Serial.println(parte2Comb,HEX);
+  Serial.write(parte2Comb);
   delay(2000);
   //combHex();
   

@@ -69,7 +69,7 @@ char cambiarHex(int valor){
           devolver='3';
         break;
         case 4:
-          devolver='4';
+          devolver='4';//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         break;
         case 5:
           devolver='5';

@@ -6,12 +6,13 @@ void setup() {
   
 }
 //int combinacion[]={15,15,15,10};
-int combinacion[4];
+
 void incrementaComb(int valorPos, int pos);
 void cambiarHex();
 void combHex();
+void imprimirByte(byte byte1, byte byte2);
 
-void enviarPaquete(byte byte1, byte byte2);
+int combinacion[4];
 Combinacion comb;
 ComandoAT comando;
 
@@ -62,7 +63,7 @@ void combHex(){
   unsigned long aux1 = strtoul(textobyte1, NULL, HEX);
   unsigned long aux2 = strtoul(textobyte2, NULL, HEX);
 
-  enviarPaquete(aux1,aux2);
+  imprimirByte(aux1,aux2);
 }
 
 char cambiarHex(int valor){
@@ -130,31 +131,8 @@ void incrementaComb(int valorPos, int pos)
   combinacion[pos]=valorPos;
 }
 
-void enviarPaquete(byte byte1, byte byte2){
+void imprimirByte(byte byte1, byte byte2){
   Serial.print(byte1);
   Serial.print(" ");
   Serial.println(byte2);
 }
-/*void enviarFrame(){
-  Serial.write(0x7E);
-  Serial.write(0x00);
-  Serial.write(0x10);
-  Serial.write(0x17);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0x00);
-  Serial.write(0xFF);
-  Serial.write(0xFF);
-  Serial.write(0xFF);
-  Serial.write(0xFE);
-  Serial.write(0x02);
-  Serial.write('I');
-  Serial.write('D');
-  Serial.write(combinacionHex[0]);
-  //long sum = 0x17 + 0xFF + 0xFF + 0xFF + 0xFE + 0x02 + 'D' + '1' + value;
- // Serial.write(0xFF-(sum & 0xFF)); 
-}*/

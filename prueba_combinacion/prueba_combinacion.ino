@@ -22,28 +22,54 @@ void loop() {
   //FALTA PROBAR 0000 PERO CREO QUE ESA NO VALE 
   
   //incrementaComb(combinacion[3],3);
-  comb.incrementaComb(combinacion,combinacion[3],3);
+  /*comb.incrementaComb(combinacion,combinacion[3],3);
   byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
   byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
   Serial.print(parte1Comb);
   Serial.print(" ");
   Serial.println(parte2Comb);
-  comando.comandoAT_LED(0x4);
+  //comando.comandoAT_LED(0x4);
   //Serial.write(parte2Comb);
   delay(2000);
-  //combHex();
+  //combHex();*/
+  
 
+         byte apagaByte = comb.generarByte(0,4);
+  byte enciendeByte = comb.generarByte(0,5);
+  byte idPrueba1C = comb.generarByte(1,2);
+  byte idPrueba2C = comb.generarByte(1,2);
+   
+   delay(5000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+   comando.comandoAT_LED(apagaByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+   comando.comandoAT_LED(apagaByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+  comando.comandoAT_CambiarIDC(idPrueba1C, idPrueba2C);
+  comando.comandoAT_LED(apagaByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+   comando.comandoAT_LED(apagaByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
+   comando.comandoAT_LED(apagaByte);
+   delay(2000);
+   comando.comandoAT_LED(enciendeByte);
+   delay(2000);
   
+   
   //ENCENDER Y APAGAR LED 
-  /*
-  byte parte1Comb = comb.generarByte(0,4);
-  byte parte2Comb = comb.generarByte(0,5);
   
-  comando.comandoAT_LED(parte1Comb);
-   delay(2000);
-  comando.comandoAT_LED(parte2Comb);
-   delay(2000);
-  */
+  
   
 }
 void combHex(){

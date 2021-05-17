@@ -32,27 +32,21 @@ void loop() {
   //Serial.write(parte2Comb);
   delay(2000);
   //combHex();*/
-  
+ //enviamos comando AT hay respuesta Serial.Avalible y Espera =false;
+ //si 
+ //cambiamos id router 
+ //no
+ //incrementamos id coordinador esperamos hasta que haya respuesta 
 
-         byte apagaByte = comb.generarByte(0,4);
+  byte apagaByte = comb.generarByte(0,4);
   byte enciendeByte = comb.generarByte(0,5);
-  byte idPrueba1C = comb.generarByte(1,2);
-  byte idPrueba2C = comb.generarByte(1,2);
+  byte idPrueba1R = comb.generarByte(3,2);
+  byte idPrueba2R = comb.generarByte(3,2);
+  byte idPrueba1C = comb.generarByte(2,2);
+  byte idPrueba2C = comb.generarByte(2,2);
    
-   delay(5000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
-   comando.comandoAT_LED(apagaByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
-   comando.comandoAT_LED(apagaByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
   comando.comandoAT_CambiarIDC(idPrueba1C, idPrueba2C);
+  
   comando.comandoAT_LED(apagaByte);
    delay(2000);
    comando.comandoAT_LED(enciendeByte);
@@ -65,7 +59,9 @@ void loop() {
    delay(2000);
    comando.comandoAT_LED(enciendeByte);
    delay(2000);
+   
   
+
    
   //ENCENDER Y APAGAR LED 
   

@@ -38,27 +38,18 @@ void loop() {
  //no
  //incrementamos id coordinador esperamos hasta que haya respuesta 
 
-  byte apagaByte = comb.generarByte(0,4);
+ /* byte apagaByte = comb.generarByte(0,4);
   byte enciendeByte = comb.generarByte(0,5);
   byte idPrueba1R = comb.generarByte(3,2);
   byte idPrueba2R = comb.generarByte(3,2);
   byte idPrueba1C = comb.generarByte(2,2);
-  byte idPrueba2C = comb.generarByte(2,2);
+  byte idPrueba2C = comb.generarByte(2,2);*/
    
-  comando.comandoAT_CambiarIDC(idPrueba1C, idPrueba2C);
-  
-  comando.comandoAT_LED(apagaByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
-   comando.comandoAT_LED(apagaByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
-   comando.comandoAT_LED(apagaByte);
-   delay(2000);
-   comando.comandoAT_LED(enciendeByte);
-   delay(2000);
+  comando.comandoAT_PedirID();
+  delay(2000);
+  if(Serial.available()){
+    Serial.print("hola");
+  }
    
   
 

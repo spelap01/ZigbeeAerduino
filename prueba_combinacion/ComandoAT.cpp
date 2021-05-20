@@ -77,9 +77,9 @@ void ComandoAT::comandoAT_PedirID(){
   //7E 00 0F 17 01 00 00 00 00 00 00 FF FF FF FE 02 49 44 5D
   Serial.write(0x7E);
   Serial.write(0x00);
-  Serial.write(0x11);
+  Serial.write(0x0F);
   Serial.write(0x17);
-  Serial.write(0x00);
+  Serial.write(0x01);
   Serial.write(0x00);
   Serial.write(0x00);
   Serial.write(0x00);
@@ -93,6 +93,6 @@ void ComandoAT::comandoAT_PedirID(){
   Serial.write(0x02);
    Serial.write('I');
   Serial.write('D');
-  long sum =  0x17 + 0xFF + 0xFF + 0xFF + 0xFE + 0x02 + 'I' + 'D' ;
+  long sum =  0x17 +0x01 + 0xFF + 0xFF + 0xFF + 0xFE + 0x02 + 'I' + 'D' ;
   Serial.write(0xFF-(sum & 0xFF));
 }

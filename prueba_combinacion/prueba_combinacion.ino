@@ -48,7 +48,12 @@ void loop() {
   comando.comandoAT_PedirID();
   delay(2000);
   if(Serial.available()){
-    Serial.print("hola");
+       Serial.println(Serial.read(),HEX);
+       Serial.println(Serial.read(),HEX);
+       Serial.println(Serial.read(),HEX);
+       while(Serial.available()){
+          Serial.read();
+       }
   }
    
   

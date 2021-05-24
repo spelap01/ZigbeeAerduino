@@ -44,38 +44,17 @@ void loop() {
   byte idPrueba2R = comb.generarByte(3,2);
   byte idPrueba1C = comb.generarByte(2,2);
   byte idPrueba2C = comb.generarByte(2,2);*/
-  //generamos la combinacion en forma de bytes
-  byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
-  byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
-  //pedimos informacion del router de la red
+   
   comando.comandoAT_PedirID();
   delay(2000);
-  //recivimos la informacion 
   if(Serial.available()){
-    //leemos los bytes del paquete hasta el que nos interesa.
-    Serial.println(Serial.read(),HEX);
-    Serial.println(Serial.read(),HEX);
-    //en este caso no existe recivimos error.
-    if(Serial.read()==0x0F){
-      //descartamos el buffer de entrada para evitar fallos
-      while(Serial.available()){
-        Serial.read();
-      }
-      //actualizamos id del coordinador
-      comando.comandoAT_CambiarIDC(parte1Comb,parte2Comb);
-      //incrementamos id.
-      comb.incrementaComb(combinacion,combinacion[3],3);
-      
-    }else
-    //recivimos respuesta por lo tanto el router existe.
-    {
-      //para que se pueda monitorizar encendemos y apagamos led a forma de señal
-      comando.comandoAT_LED(0x05);
-      delay(2000);
-      comando.comandoAT_LED(0x04);
-      //modificamos ID del router
-      comando.comandoAT_CambiarIDR(parte1Comb,parte2Comb);
-    }
+    Serial.print("HOLAAAAAAAAAAAAAAAAA");
+        Serial.println(Serial.read(),HEX);
+        Serial.println(Serial.read(),HEX);
+        Serial.println(Serial.read(),HEX);
+         while(Serial.available()){
+            Serial.read();
+         }
   }
    
   

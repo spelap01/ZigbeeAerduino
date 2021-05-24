@@ -48,6 +48,7 @@ void loop() {
   comando.comandoAT_PedirID();
   delay(2000);
   if(Serial.available()){
+<<<<<<< HEAD
     Serial.print("HOLAAAAAAAAAAAAAAAAA");
         Serial.println(Serial.read(),HEX);
         Serial.println(Serial.read(),HEX);
@@ -55,6 +56,14 @@ void loop() {
          while(Serial.available()){
             Serial.read();
          }
+=======
+       Serial.println(Serial.read(),HEX);
+       Serial.println(Serial.read(),HEX);
+       Serial.println(Serial.read(),HEX);
+       while(Serial.available()){
+          Serial.read();
+       }
+>>>>>>> parent of 8a88c2f (flujo final del programa)
   }
    
   

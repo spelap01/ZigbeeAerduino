@@ -13,9 +13,9 @@ void combHex();
 void imprimirByte(byte byte1, byte byte2);
 
 int combinacion[4];
-boolean cambiado;
 Combinacion comb;
 ComandoAT comando;
+boolean cambiado;
 
 void loop() {
   

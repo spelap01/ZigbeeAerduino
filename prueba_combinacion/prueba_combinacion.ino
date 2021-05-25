@@ -13,6 +13,7 @@ void combHex();
 void imprimirByte(byte byte1, byte byte2);
 
 int combinacion[4];
+boolean cambiado;
 Combinacion comb;
 ComandoAT comando;
 
@@ -44,18 +45,64 @@ void loop() {
   byte idPrueba2R = comb.generarByte(3,2);
   byte idPrueba1C = comb.generarByte(2,2);
   byte idPrueba2C = comb.generarByte(2,2);*/
-   
+  //generamos la combinacion en forma de bytes
+  byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
+  byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
+  //pedimos informacion del router de la red
   comando.comandoAT_PedirID();
   delay(2000);
-  if(Serial.available()){
-    Serial.print("HOLAAAAAAAAAAAAAAAAA");
-        Serial.println(Serial.read(),HEX);
-        Serial.println(Serial.read(),HEX);
-        Serial.println(Serial.read(),HEX);
-         while(Serial.available()){
-            Serial.read();
-         }
-  }
+ 
+      //leemos los bytes del paquete hasta el que nos interesa.
+    if(Serial.read()==0x7E){
+    Serial.print("Combinacion: ");
+    Serial.print(combinacion[0]);
+    Serial.print(" ");
+    Serial.print(combinacion[1]);
+    Serial.print(" ");
+    Serial.print(combinacion[2]);
+    Serial.print(" ");
+    Serial.print(combinacion[3]);
+    Serial.println(" ");
+    Serial.println(Serial.read(),HEX);
+    byte tamano=Serial.read();
+    Serial.println(tamano,HEX);
+    while(Serial.available()){
+        Serial.read();
+    }
+    //en este caso no existe recivimos error.
+    if(cambiado){
+      //descartamos el buffer de entrada para evitar fallos
+      
+      //actualizamos id del coordinador
+      byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
+      byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
+      comando.comandoAT_CambiarIDC(parte1Comb,parte2Comb);
+      //incrementamos id.
+      
+      comb.incrementaComb(combinacion,combinacion[3],3);
+      cambiado=false;
+    }else
+    //recivimos respuesta por lo tanto el router existe.
+    {
+     if (tamano==0x17){
+      Serial.println("HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+      comando.comandoAT_LED(0x05);
+      delay(2000);
+      comando.comandoAT_LED(0x04);
+      //modificamos ID del router
+      byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
+      byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
+      comando.comandoAT_CambiarIDR(parte1Comb,parte2Comb);
+      cambiado=true;
+     }
+      
+      //para que se pueda monitorizar encendemos y apagamos led a forma de señal
+      /*
+       
+      comando.comandoAT_CambiarIDR(parte1Comb,parte2Comb);
+      delay(2000);*/
+    }
+    }
    
   
 

@@ -74,8 +74,6 @@ void loop() {
       //descartamos el buffer de entrada para evitar fallos
       
       //actualizamos id del coordinador
-      byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
-      byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
       comando.comandoAT_CambiarIDC(parte1Comb,parte2Comb);
       //incrementamos id.
       
@@ -90,8 +88,6 @@ void loop() {
       delay(2000);
       comando.comandoAT_LED(0x04);
       //modificamos ID del router
-      byte parte1Comb = comb.generarByte(combinacion[0],combinacion[1]);
-      byte parte2Comb = comb.generarByte(combinacion[2],combinacion[3]);
       comando.comandoAT_CambiarIDR(parte1Comb,parte2Comb);
       cambiado=true;
      }

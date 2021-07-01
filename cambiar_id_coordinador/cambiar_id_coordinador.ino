@@ -20,9 +20,10 @@ boolean cambiado;
 void loop() {
   Combinacion comb;
 ComandoAT comando;
-  byte parte1Comb = comb.generarByte(0,0);
-  byte parte2Comb = comb.generarByte(0,1);
+  byte parte1Comb = comb.generarByte(2,2);
+  byte parte2Comb = comb.generarByte(2,2);
   comando.comandoAT_CambiarIDC(parte1Comb,parte2Comb);
+  delay(5000);
  }
    
 
